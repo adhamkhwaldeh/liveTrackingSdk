@@ -44,7 +44,7 @@ Add the `liveTrackingSdk` module as a dependency in your app's `build.gradle.kts
 
 ```gradle
 dependencies {
-    implementation("com.github.adhamkhwaldeh:liveTrackingSdk:1.0.3")
+    implementation("com.github.adhamkhwaldeh:liveTrackingSdk:1.0.7")
 }
 ```
 
