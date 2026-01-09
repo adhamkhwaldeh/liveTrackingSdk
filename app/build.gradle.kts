@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.kerberos.trackingSdk"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.kerberos.trackingSdk"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
 
@@ -30,11 +30,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -103,6 +103,7 @@ dependencies {
     kapt(libs.koin.ksp.compiler)
 
 //    implementation("com.github.adhamkhwaldeh:liveTrackingSdk:1.0.3")
+    implementation("com.github.adhamkhwaldeh.WeatherSdk:CommonLibrary:1.0.2")
     implementation(project(":liveTrackingSdk"))
 
 }

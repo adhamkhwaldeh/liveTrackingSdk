@@ -2,7 +2,7 @@ package com.kerberos.trackingSdk.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kerberos.trackingSdk.base.states.BaseState
+import com.github.adhamkhwaldeh.commonlibrary.base.states.BaseState
 import com.kerberos.trackingSdk.models.TripTrackModel
 import com.kerberos.trackingSdk.orm.TripTrack
 import com.kerberos.trackingSdk.repositories.repositories.TripTrackRepository

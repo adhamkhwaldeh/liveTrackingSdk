@@ -1,8 +1,8 @@
 package com.kerberos.trackingSdk.useCases
 
-import com.kerberos.trackingSdk.base.BaseSealedUseCase
-import com.kerberos.trackingSdk.base.states.BaseState
-import com.kerberos.trackingSdk.base.states.asBasState
+import com.github.adhamkhwaldeh.commonlibrary.base.BaseSealedUseCase
+import com.github.adhamkhwaldeh.commonlibrary.base.states.BaseState
+import com.github.adhamkhwaldeh.commonlibrary.base.states.asBasState
 import com.kerberos.trackingSdk.models.TripModel
 import com.kerberos.trackingSdk.orm.Trip
 import com.kerberos.trackingSdk.repositories.repositories.TripRepository

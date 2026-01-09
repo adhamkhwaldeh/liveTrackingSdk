@@ -1,7 +1,6 @@
 package com.kerberos.trackingSdk.useCases
 
-import com.kerberos.trackingSdk.base.BaseFlowUseCase
-import com.kerberos.trackingSdk.base.BaseUseCase
+import com.github.adhamkhwaldeh.commonlibrary.base.BaseFlowUseCase
 import com.kerberos.trackingSdk.models.TripModel
 import com.kerberos.trackingSdk.repositories.repositories.TripRepository
 import kotlinx.coroutines.flow.Flow

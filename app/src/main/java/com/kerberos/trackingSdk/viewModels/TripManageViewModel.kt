@@ -4,8 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kerberos.trackingSdk.base.BaseRefactorViewModel
-import com.kerberos.trackingSdk.base.states.BaseState
+import com.github.adhamkhwaldeh.commonlibrary.base.states.BaseState
 import com.kerberos.trackingSdk.mappers.toTrip
 import com.kerberos.trackingSdk.models.TripModel
 import com.kerberos.trackingSdk.useCases.AddNewTripUseCase

@@ -8,8 +8,6 @@ import com.kerberos.livetrackingsdk.LiveTrackingManager
 import com.kerberos.livetrackingsdk.enums.TrackingState
 import com.kerberos.livetrackingsdk.interfaces.ITrackingLocationListener
 import com.kerberos.livetrackingsdk.interfaces.ITrackingStatusListener
-import com.kerberos.trackingSdk.base.states.BaseState
-import com.kerberos.trackingSdk.models.TripTrackModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

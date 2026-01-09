@@ -1,6 +1,6 @@
 package com.kerberos.trackingSdk.useCases
 
-import com.kerberos.trackingSdk.base.BaseFlowUseCase
+import com.github.adhamkhwaldeh.commonlibrary.base.BaseFlowUseCase
 import com.kerberos.trackingSdk.models.TripModel
 import com.kerberos.trackingSdk.models.TripTrackModel
 import com.kerberos.trackingSdk.orm.TripTrack

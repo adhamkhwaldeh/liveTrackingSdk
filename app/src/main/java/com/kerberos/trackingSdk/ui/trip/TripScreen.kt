@@ -32,7 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.kerberos.trackingSdk.base.states.BaseState
+import com.github.adhamkhwaldeh.commonlibrary.base.states.BaseState
 import com.kerberos.trackingSdk.viewModels.TripManageViewModel
 import com.kerberos.trackingSdk.viewModels.TripViewModel
 import eu.bambooapps.material3.pullrefresh.PullRefreshIndicator
