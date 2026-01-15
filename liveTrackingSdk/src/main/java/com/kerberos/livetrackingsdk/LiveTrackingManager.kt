@@ -13,6 +13,7 @@ import com.kerberos.livetrackingsdk.services.BaseTrackingService
 import com.kerberos.livetrackingsdk.services.DefaultTrackingService
 import com.kerberos.livetrackingsdk.managers.BackgroundTrackingManager
 import com.kerberos.livetrackingsdk.managers.BaseTrackingManager
+import com.adham.commonsdk.basesdk.BaseSDK
 import com.kerberos.livetrackingsdk.managers.ForegroundTrackingManager
 
 
@@ -22,7 +23,7 @@ class LiveTrackingManager private constructor(
     var liveTrackingMode: LiveTrackingMode = LiveTrackingMode.FOREGROUND_SERVICE,
     val sdkPreferencesManager: SdkPreferencesManager,
     private val trackingLocationListener: MutableList<ITrackingStatusListener> = mutableListOf()
-) : ITrackingActionsListener, ITrackingSdkModeStatusListener {
+) : BaseSDK(context), ITrackingActionsListener, ITrackingSdkModeStatusListener {
 
     // Builder Class
     class Builder(private val applicationContext: Context) {

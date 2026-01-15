@@ -118,6 +118,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences) // Or the latest version
     implementation(libs.androidx.lifecycle.runtime.ktx) // Often used with DataStore for coroutine scopes
 
+    implementation("com.github.adhamkhwaldeh.WeatherSdk:WeatherSDK:1.0.9")
 }
 
 tasks.withType<DokkaTaskPartial>().configureEach { // Use DokkaTaskPartial for module-level config
