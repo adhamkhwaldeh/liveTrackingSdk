@@ -1,0 +1,35 @@
+project:
+  name: livetrackingsdk
+  version: "{{project.version}}"   # Reads version from Gradle
+  description: "SDK for live tracking"
+  license: Apache-2.0
+  authors:
+    - name: Adham Khwaldeh
+      email: adhamkhwaldeh@gmail.com
+  website: "https://github.com/adhamkhwaldeh/livetrackingsdk"
+  scm:
+    url: "https://github.com/adhamkhwaldeh/livetrackingsdk.git"
+    connection: "scm:git:git://github.com/adhamkhwaldeh/livetrackingsdk.git"
+    developerConnection: "scm:git:ssh://github.com/adhamkhwaldeh/livetrackingsdk.git"
+
+release:
+  github:
+    enabled: false   # ✅ Disable GitHub releases
+
+deploy:
+  maven:
+    nexus2:
+      sonatype:
+        active: ALWAYS
+        url: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+        snapshotUrl: https://s01.oss.sonatype.org/content/repositories/snapshots/
+        closeRepository: true
+        releaseRepository: true
+        username: 0WxTwE
+        password: PGAZraMujW7r53aWgaQIfLzgqufnzWaX8
+#        username: {{env.OSSRH_USERNAME}}
+#        password: {{env.OSSRH_PASSWORD}}
+
+signing:
+  active: ALWAYS
+  armored: true

@@ -1,8 +1,6 @@
 package com.kerberos.trackingSdk.ui.theme.ui.theme
 
-import android.app.Activity
 import android.os.Build
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -10,6 +8,10 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+
+enum class AppTheme {
+    LIGHT, DARK, RED
+}
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -21,33 +23,37 @@ private val LightColorScheme = lightColorScheme(
     primary = Purple40,
     secondary = PurpleGrey40,
     tertiary = Pink40
+)
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+private val RedColorScheme = lightColorScheme(
+    primary = Red500,
+    secondary = Red200,
+    tertiary = Red700
 )
 
 @Composable
 fun MyApplicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    theme: AppTheme = AppTheme.LIGHT,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            when (theme) {
+                AppTheme.LIGHT -> dynamicLightColorScheme(context)
+                AppTheme.DARK -> dynamicDarkColorScheme(context)
+                AppTheme.RED -> RedColorScheme // Dynamic red is not a thing, so fallback
+            }
         }
-
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        else -> {
+            when (theme) {
+                AppTheme.LIGHT -> LightColorScheme
+                AppTheme.DARK -> DarkColorScheme
+                AppTheme.RED -> RedColorScheme
+            }
+        }
     }
 
     MaterialTheme(

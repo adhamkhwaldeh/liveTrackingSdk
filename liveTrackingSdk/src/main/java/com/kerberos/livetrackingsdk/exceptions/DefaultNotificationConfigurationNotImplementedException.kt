@@ -1,0 +1,3 @@
+package com.kerberos.livetrackingsdk.exceptions
+
+class DefaultNotificationConfigurationNotImplementedException : Exception()

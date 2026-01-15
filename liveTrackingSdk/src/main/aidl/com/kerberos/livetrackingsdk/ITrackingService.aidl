@@ -1,7 +1,4 @@
-// ITrackingService.aidl
 package com.kerberos.livetrackingsdk;
-
-// Declare any non-default types here with import statements
 
 interface ITrackingService {
 

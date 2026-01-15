@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Aplicación de seguimiento</string>
+    <string name="title_activity_main">Actividad Principal</string>
+
+    <string name="noConnection">"Aparentemente tienes un problema de conectividad \\n ¿Podrías presionar reintentar para cargar los datos?"</string>
+    <string name="Retry">Reintentar</string>
+    <string name="youAreNotAuthorized">No estás autorizado</string>
+    <string name="internalServerError">Error interno del servidor</string>
+
+    <string name="setting_language">Idioma</string>
+    <string name="setting_theme">Tema</string>
+    <string name="setting_language_english">Inglés</string>
+    <string name="setting_language_spanish">Español</string>
+    <string name="setting_theme_light">Claro</string>
+    <string name="setting_theme_dark">Oscuro</string>
+</resources>
