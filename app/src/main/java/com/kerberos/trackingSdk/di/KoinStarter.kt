@@ -1,9 +1,11 @@
 package com.kerberos.trackingSdk.di
 
 import android.app.Application
+import com.github.adhamkhwaldeh.commonsdk.logging.LogLevel
 import com.kerberos.trackingSdk.repositories.repositories.TripPagingRepository
 import com.google.gson.Gson
 import com.kerberos.livetrackingsdk.LiveTrackingManager
+import com.kerberos.livetrackingsdk.configs.LiveTrackingConfig
 import com.kerberos.trackingSdk.factories.TripUseCaseFactory
 import com.kerberos.trackingSdk.orm.LiveTrackingDatabase
 import com.kerberos.trackingSdk.repositories.repositories.TripPagingRepositoryImpl
@@ -76,8 +78,15 @@ object KoinStarter {
             LocationTrackingManager(get())
         }
         single {
-            LiveTrackingManager.Builder(get())
-                .setBackgroundService(TripBackgroundService::class.java)
+            LiveTrackingManager.Builder(
+                get(), LiveTrackingConfig(
+                    isEnabled = true,
+                    isDebugMode = true,
+                    isLoggingEnabled = true,
+                    overridable = true,
+                    logLevel = LogLevel.DEBUG,
+                )
+            ).setBackgroundService(TripBackgroundService::class.java)
                 .build()
         }
     }
