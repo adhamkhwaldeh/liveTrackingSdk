@@ -1,16 +1,22 @@
 package com.kerberos.livetrackingsdk.managers
 
 import android.content.Context
-import com.adham.commonsdk.basemanager.BaseManager
+import com.github.adhamkhwaldeh.commonsdk.listeners.errors.ErrorListener
+import com.github.adhamkhwaldeh.commonsdk.logging.Logger
+import com.github.adhamkhwaldeh.commonsdk.managers.BaseManagerImpl
+import com.kerberos.livetrackingsdk.configs.TrackingConfig
 import com.kerberos.livetrackingsdk.interfaces.ITrackingActionsListener
 import com.kerberos.livetrackingsdk.interfaces.ITrackingSdkModeStatusListener
 
 abstract class BaseTrackingManager(
+    config: TrackingConfig,
+    logger: Logger,
     var context: Context,
-    val trackingSdkModeStatusListener: ITrackingSdkModeStatusListener
-) : BaseManager(context), ITrackingActionsListener {
-//    abstract val locationManager: LocationTrackingManager?
-//        get
+    val trackingSdkModeStatusListener: ITrackingSdkModeStatusListener,
+) : BaseManagerImpl<ITrackingActionsListener, ErrorListener, TrackingConfig>(
+    config,
+    logger
+), ITrackingActionsListener {
 
     abstract fun initializeTrackingManager(): Boolean
 

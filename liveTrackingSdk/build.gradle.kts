@@ -22,7 +22,7 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 30
         version = "1.0.7"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -43,8 +43,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
+    kotlin {
+        jvmToolchain(17)
     }
 
     buildFeatures {
@@ -118,7 +118,7 @@ dependencies {
     implementation(libs.androidx.datastore.preferences) // Or the latest version
     implementation(libs.androidx.lifecycle.runtime.ktx) // Often used with DataStore for coroutine scopes
 
-    implementation("com.github.adhamkhwaldeh.WeatherSdk:WeatherSDK:1.0.9")
+    api("com.github.adhamkhwaldeh.WeatherSdk:CommonSDK:1.0.9")
 }
 
 tasks.withType<DokkaTaskPartial>().configureEach { // Use DokkaTaskPartial for module-level config

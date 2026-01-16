@@ -8,8 +8,10 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import androidx.core.content.ContextCompat
+import com.github.adhamkhwaldeh.commonsdk.logging.Logger
 import com.kerberos.livetrackingsdk.BuildConfig
 import com.kerberos.livetrackingsdk.ITrackingService
+import com.kerberos.livetrackingsdk.configs.TrackingConfig
 import com.kerberos.livetrackingsdk.interfaces.IServiceExposeWithBinder
 import com.kerberos.livetrackingsdk.interfaces.ITrackingSdkModeStatusListener
 import com.kerberos.livetrackingsdk.services.BaseTrackingService
@@ -18,10 +20,12 @@ import timber.log.Timber
 
 @OptIn(DelicateCoroutinesApi::class)
 class BackgroundTrackingManager(
+    config: TrackingConfig,
+    logger: Logger,
     context: Context,
     val serviceClass: Class<out BaseTrackingService>,
     trackingSdkModeStatusListener: ITrackingSdkModeStatusListener
-) : BaseTrackingManager(context, trackingSdkModeStatusListener) {
+) : BaseTrackingManager(config, logger, context, trackingSdkModeStatusListener) {
 
     var itsTrackService: ITrackingService? = null
 
@@ -110,6 +114,31 @@ class BackgroundTrackingManager(
         }
         return true
     }
+
+    //#endregion
+
+    //#region manager
+
+    override fun isStarted(): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun start() {
+        TODO("Not yet implemented")
+    }
+
+    override fun stop() {
+        TODO("Not yet implemented")
+    }
+
+    override fun pause() {
+        TODO("Not yet implemented")
+    }
+
+    override fun resume() {
+        TODO("Not yet implemented")
+    }
+
     //#endregion
 
 }

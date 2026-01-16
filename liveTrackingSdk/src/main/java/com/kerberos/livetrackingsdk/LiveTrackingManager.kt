@@ -13,20 +13,32 @@ import com.kerberos.livetrackingsdk.services.BaseTrackingService
 import com.kerberos.livetrackingsdk.services.DefaultTrackingService
 import com.kerberos.livetrackingsdk.managers.BackgroundTrackingManager
 import com.kerberos.livetrackingsdk.managers.BaseTrackingManager
-import com.adham.commonsdk.basesdk.BaseSDK
+import com.github.adhamkhwaldeh.commonsdk.listeners.errors.ErrorListener
+import com.github.adhamkhwaldeh.commonsdk.logging.LogLevel
+import com.github.adhamkhwaldeh.commonsdk.logging.Logger
+import com.github.adhamkhwaldeh.commonsdk.logging.LoggerProxy
+import com.github.adhamkhwaldeh.commonsdk.sdks.BaseSDKImpl
+import com.kerberos.livetrackingsdk.configs.LiveTrackingConfig
+import com.kerberos.livetrackingsdk.configs.TrackingConfig
+import com.kerberos.livetrackingsdk.logging.TrackingLogger
 import com.kerberos.livetrackingsdk.managers.ForegroundTrackingManager
+import kotlin.Boolean
 
 
 class LiveTrackingManager private constructor(
-    val context: Context,
+    context: Context,
+    config: LiveTrackingConfig,
     backgroundService: Class<out BaseTrackingService> = DefaultTrackingService::class.java,
     var liveTrackingMode: LiveTrackingMode = LiveTrackingMode.FOREGROUND_SERVICE,
     val sdkPreferencesManager: SdkPreferencesManager,
-    private val trackingLocationListener: MutableList<ITrackingStatusListener> = mutableListOf()
-) : BaseSDK(context), ITrackingActionsListener, ITrackingSdkModeStatusListener {
+    private val trackingLocationListener: MutableList<ITrackingStatusListener> = mutableListOf(),
+) : BaseSDKImpl<ITrackingSdkModeStatusListener, ErrorListener, LiveTrackingConfig>(context, config),
+    ITrackingActionsListener, ITrackingSdkModeStatusListener {
 
     // Builder Class
-    class Builder(private val applicationContext: Context) {
+    class Builder(
+        private val applicationContext: Context, private val config: LiveTrackingConfig
+    ) {
         // Default values are set here
 
         private var backgroundService: Class<out BaseTrackingService> =
@@ -108,16 +120,33 @@ class LiveTrackingManager private constructor(
                 context = applicationContext,
                 backgroundService = this.backgroundService,
                 liveTrackingMode = this.trackingMode, // Use the mode set in the builder
-                sdkPreferencesManager = this.preferencesManager
+                sdkPreferencesManager = this.preferencesManager,
+                config = config,
             )
             // KerberosLiveTracking.INSTANCE = sdkInstance // Set the singleton instance
             return sdkInstance
         }
     }
 
+    val configManagers = TrackingConfig(
+        isEnabled = true,
+        isDebugMode = true,
+        isLoggingEnabled = true,
+        overridable = true,
+        logLevel = LogLevel.DEBUG,
+    )
+
+    val logger: Logger = TrackingLogger()
+
     val trackingManagers: MutableList<BaseTrackingManager> = mutableListOf(
-        ForegroundTrackingManager(context, this),
-        BackgroundTrackingManager(context, backgroundService, this,)
+        ForegroundTrackingManager(
+            configManagers, logger, context,
+            this
+        ),
+        BackgroundTrackingManager(
+            configManagers, logger, context,
+            backgroundService, this
+        )
     )
 
     val trackingLocationListeners: MutableList<ITrackingLocationListener> = mutableListOf()

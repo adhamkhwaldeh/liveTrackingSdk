@@ -1,14 +1,18 @@
 package com.kerberos.livetrackingsdk.managers
 
 import android.content.Context
+import com.github.adhamkhwaldeh.commonsdk.logging.Logger
+import com.kerberos.livetrackingsdk.configs.TrackingConfig
 import com.kerberos.livetrackingsdk.enums.LiveTrackingMode
 import com.kerberos.livetrackingsdk.interfaces.ITrackingSdkModeStatusListener
 
 
 class ForegroundTrackingManager(
+    config: TrackingConfig,
+    logger: Logger,
     context: Context,
     trackingSdkModeStatusListener: ITrackingSdkModeStatusListener
-) : BaseTrackingManager(context, trackingSdkModeStatusListener) {
+) : BaseTrackingManager(config, logger, context, trackingSdkModeStatusListener) {
 
     private val locationTrackingManager: LocationTrackingManager by lazy {
         LocationTrackingManager(context)
@@ -27,7 +31,6 @@ class ForegroundTrackingManager(
         return locationTrackingManager.onStopTracking()
     }
     //#endregion
-
 
     //#region tracking functions
     override fun onStartTracking(): Boolean {
@@ -66,4 +69,29 @@ class ForegroundTrackingManager(
         return false
     }
     //#endregion
+
+    //#region manager
+
+    override fun isStarted(): Boolean {
+        TODO("Not yet implemented")
+    }
+
+    override fun start() {
+        TODO("Not yet implemented")
+    }
+
+    override fun stop() {
+        TODO("Not yet implemented")
+    }
+
+    override fun pause() {
+        TODO("Not yet implemented")
+    }
+
+    override fun resume() {
+        TODO("Not yet implemented")
+    }
+
+    //#endregion
+
 }
