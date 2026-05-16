@@ -27,3 +27,5 @@ dependencyResolutionManagement {
 rootProject.name = "Tracking Application"
 include(":app")
 include(":liveTrackingSdk")
+include(":macrobenchmark")
+include(":microbenchmark")
