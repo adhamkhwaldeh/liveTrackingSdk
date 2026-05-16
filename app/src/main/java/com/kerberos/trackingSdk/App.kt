@@ -9,6 +9,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 //        LiveTrackingManager().initialize()
+        LeakCanaryInitializer.initialize(this)
         KoinStarter.startKoin(this)
     }
 
